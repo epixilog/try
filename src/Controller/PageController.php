@@ -37,34 +37,4 @@ class PageController extends Controller
         ]);
     }
     
-    /**
-     * @Route("/login", name="page_login")
-     */
-    public function login()
-    {
-        return $this->render('page/login.html.twig', [
-            'page_title' => 'Login'
-        ]);
-    }
-    
-    /**
-     * @Route("/forgot-password", name="page_forgot_pass")
-     */
-    public function forgot()
-    {
-        return $this->render('page/forgot.html.twig', [
-            'page_title' => 'Forgot password'
-        ]);
-    }
-    
-    /**
-     * @Route("/register", name="page_register")
-     */
-    public function register()
-    {
-        return $this->render('page/register.html.twig', [
-            'page_title' => 'Register'
-        ]);
-    }
-    
 }
