@@ -1,0 +1,55 @@
+{% extends 'main.html.twig' %}
+
+{% block body %}
+    <section class="main__middle__container green_bg">
+      <div class="container">
+            <div class="row">
+              <h2 class="text-center">Facing Problem or Any Query ....??</h2>
+              <p class="text-center">Please Fell Free to Contact Us </p>
+            </div>
+      </div>
+    </section>
+    
+    <section class="main__middle__container">
+
+    <h1>&nbsp;</h1>
+      <div class="container">
+        <div class="row">
+            <form method="post" action="contact">
+
+                <div class="form-group">
+                      <div class="col-sm-4"><input placeholder="Your Name" name="name" class="form-control" type="text"></div>
+                      <div class="col-sm-4"><input placeholder="Your Email" name="email" class="form-control" type="text"></div>
+                      <div class="col-sm-4"><input placeholder="Your Phone" name="phone" class="form-control" type="text"></div>
+                
+                <br/>
+                <br/>
+                <br/>
+                      <div class="col-sm-12"><input placeholder="Subject" name="subject" class="form-control" type="text"></div>
+                
+                <br/>
+                <br/>
+                <br/>
+                <div class="col-sm-12"><textarea class="form-control" placeholder="Your Message" name="msg" rows="5"></textarea></div>
+                
+                <br/>
+                <br/>
+                <br/>
+                <div class="col-sm-12"><button class="btn btn-primary btn-block">Send Message</button></div>
+                </div>                  
+             </form>
+       </div>
+    </div>
+    </section>
+{% endblock %}
+
+
+{% block javascript %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $('.carousel').carousel({
+          interval: 3500, // in milliseconds
+          pause: 'none' // set to 'true' to pause slider on mouse hover
+        });
+    </script>
+{% endblock %}

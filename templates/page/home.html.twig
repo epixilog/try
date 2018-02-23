@@ -1,0 +1,62 @@
+{% extends 'main.html.twig' %}
+
+{% block body %}
+
+<section class="slider">
+  <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel"> 
+    <!-- Indicators --> 
+
+    <div class="carousel-inner">
+        <div class="item <?php echo $cls; ?>"> <img data-src="<?php echo "indx/images/slider//$data[1]"; ?>" alt="First slide" src="<?php echo "indx/images/slider//$data[1]"; ?>">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1><?php echo $data[2]; ?></h1>
+            <p><?php echo $data[3]; ?></p>
+            <p><a class="btn btn-success" href="signin" role="button">Login</a><a class="btn btn-info" href="signup" role="button">Register</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon carousel-control-left"></span></a> <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon carousel-control-right"></span></a> </div>
+</section>
+<!--end of sldier section-->
+
+<section class="main__middle__container green_bg">
+  <div class="container">
+    <div class="row">
+      <h2 class="text-center"><?php echo $ttl[1]; ?></h2>
+      <p class="text-center"><?php echo $ttl[2]; ?></p>
+      
+    </div>
+  </div>
+</section>
+<section class="main__middle__container">
+  <div class="container">
+        <div class="row text-center three-blocks">
+            <div class="row text-center three-blocks">
+                <div class="col-md-4"> <img src="indx/icons/<?php echo "$i"; ?>.png" alt="image" class="img-rounded img-responsive">
+                <h3>Hi</h3>
+                <p>There</p>
+                <img src="indx/images/<?php echo "$i"; ?>.jpg" alt="image" class="img-rounded img-responsive">
+                <p><?php echo $old[2]; ?></p>
+                <p><a class="btn btn-lg btn-silver" href="signin" role="button">Play Now</a></p>
+            </div>
+        </div>
+  </div>
+</section>
+
+
+{% endblock %}
+
+
+{% block javascript %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $('.carousel').carousel({
+          interval: 3500, // in milliseconds
+          pause: 'none' // set to 'true' to pause slider on mouse hover
+        });
+    </script>
+{% endblock %}

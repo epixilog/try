@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Bet | {{ page_title }}{% endblock %}</title>
+        {% block stylesheets %}
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- Bootstrap -->
+            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+            <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+            <link href='http://fonts.googleapis.com/css?family=Comfortaa:400,300,700' rel='stylesheet' type='text/css'>
+            <link rel="shortcut icon" href="{{ asset('main/images/fav.png') }}" type="image/png">
+            <!--[if lt IE 9]>
+              <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+              <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+            <![endif]-->
+            {% block mystyle %}
+              <link href="{{ asset('main/css/style.css') }}" rel="stylesheet">
+            {% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+        
+        {% block header %}
+            <header class="main__header">
+              <div class="container">
+                <nav class="navbar navbar-default"> 
+                  
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                      <li name="home"><a href="{{ path('page_home') }}">Home</a></li>
+                      <li name="contact"><a href="{{ path('page_contact') }}">contact us</a></li>
+                      <li name="about"><a href="{{ path('page_about') }}">about us</a></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li name="login"><a href="{{ path('page_login') }}">Login</a></li>
+                      <li name="register"><a href="{{ path('page_register') }}">Register</a></li>
+                    </ul>
+                  </div>
+                  <!-- /.navbar-collapse --> 
+                  
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                     <h1 class="navbar-brand"><img src="{{ asset('main/images/lets-bid.png') }}" alt="Lets Bid"></h1>
+            
+                  </div>
+                </nav>
+              </div>
+            </header>
+        {% endblock %}
+        
+        {% block body %}{% endblock %}
+        
+        {% block footer %}
+            <footer>
+              <div class="container">
+                
+                <p class="text-center">&copy; Copyright <?php echo $ttl[0]; ?>. All Rights Reserved.</p>
+              </div>
+            </footer>
+        {% endblock %}
+        
+        {% block javascripts %}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                  var $active_page = "{{ app.request.get('_route') }}";
+                  $('#bs-example-navbar-collapse-1 ul li').each(function(){
+                      var $page = "page_" + $(this).attr("name");
+                      if($page != undefined && $page == $active_page){
+                        $(this).addClass("active");
+                        return;
+                      }
+                  });
+                });
+                
+            </script>
+        {% endblock %}
+    </body>
+</html>
