@@ -1,0 +1,24 @@
+{% set page_title="login" %}
+{% extends 'main.html.twig' %}
+
+{% block mystyle %}
+    {{ parent() }}
+    <link href="{{ asset('main/css/style.default.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<section>
+    <div class="signinpanel">
+        
+        <div class="row">
+            
+            <div class="col-md-2">
+            </div>
+            
+            <div class="col-md-8">
+                {% block fos_user_content %}{% endblock %}
+            </div><!-- col-sm-5 -->
+        </div><!-- row -->
+    </div>
+</section>
+{% endblock %}
