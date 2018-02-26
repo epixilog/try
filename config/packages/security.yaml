@@ -10,7 +10,15 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            logout: true
             anonymous: true
+            
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                
+            remember_me:
+                secret: '%%env(APP_SECRET)%%'
 
             # activate different ways to authenticate
 
