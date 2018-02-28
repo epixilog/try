@@ -39,7 +39,7 @@
                       
                       {% if is_granted('ROLE_USER') %}
                           <li class="dropdown open">
-                            <a href="#">Hi, {{ app.user.username}} <i class="fa fa-caret-down"></i></a> 
+                            <a href="#">Hi, {{ app.user.firstname}} <i class="fa fa-caret-down"></i></a> 
                             <ul class="dropdown-menu">
                                 <li><a href="#"><i class="fa fa-tachometer-alt"></i> Dashboard</a></li>
                                 <li><a href="#"><i class="fab fa-ethereum"></i> Deposit</a></li>

@@ -16,10 +16,36 @@ class User extends BaseUser
      * @ORM\Column(type="integer")
      */
     protected $id;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $firstName;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $lastName;
 
     public function __construct()
     {
         parent::__construct();
         // your own logic
+    }
+    
+    public function getFirstName(){
+        return $this->firstName;
+    }
+    
+    public function setFirstName($firstName){
+        $this->firstName = $firstName;
+    }
+    
+    public function getLastName(){
+        return $this->lastName;
+    }
+    
+    public function setLastName($lastName){
+        $this->lastName = $lastName;
     }
 }

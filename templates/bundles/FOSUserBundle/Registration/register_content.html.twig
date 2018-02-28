@@ -1,10 +1,20 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<h3 class="nomargin">Sign Up</h3>
+<h3 class="nomargin" style="color:#eee">Sign Up</h3>
 <p class="mt5 mb20">Already have an Account? <a href="{{path('fos_user_security_login')}}"><strong>Sign In</strong></a></p>
                     
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.firstName, {'attr': {'class': 'form-control'} }) }}
+    
+    {{ form_row(form.lastName, {'attr': {'class': 'form-control'} }) }}
+    
+    {{ form_row(form.username, {'attr': {'class': 'form-control'} }) }}
+    
+    {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+    
+    {{ form_row(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+    
     <div>
         <input class="btn" type="submit" value="{{ 'registration.submit'|trans }}" />
     </div>
