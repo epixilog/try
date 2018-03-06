@@ -45,7 +45,7 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string")
      **/
-    private $affiliation;
+    private $affiliation; //[TODO] on create generate an affiliation code (new one)
     
     /**
      * @ORM\Column(type="integer")

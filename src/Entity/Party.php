@@ -51,7 +51,19 @@ class Party
       * @ORM\Column(type="smallint")
       **/
       private $status = 0;
+      
+      
+     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Value", mappedBy="party")
+     **/
+     private $values;
      
+     
+     
+     public function __construct()
+     {
+         $this->values = new ArrayCollection();
+     }
      
      public function getGame(): Game
      {
@@ -62,4 +74,12 @@ class Party
      {
          $this->game = $game;
      }
+     
+     /**
+      * @return Collection|Value[]
+      */
+      public function getValues()
+      {
+          return $this->values;
+      }
 }
