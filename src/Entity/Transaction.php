@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\TTransactionRepository")
+ */
+class Transaction
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+      * @ORM\Column(type="string", length=500)
+     **/
+    private $from;
+    
+    /**
+      * @ORM\Column(type="string", length=500)
+     **/
+    private $to;
+    
+    /**
+      * @ORM\Column(type="integer")
+     **/
+    private $amount;
+    
+    /**
+      * @ORM\Column(type="datetime")
+     **/
+     private $created;
+     
+     
+}

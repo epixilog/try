@@ -17,7 +17,7 @@ class Party
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Game", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Game", inversedBy="parties")
      * @ORM\JoinColumn(nullable=false)
      **/
      private $game;
