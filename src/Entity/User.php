@@ -51,6 +51,11 @@ class User extends BaseUser
      * @ORM\Column(type="integer")
      **/
     private $affiliated;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Bet", mappedBy="user")
+     **/
+     private $bets;
 
     
 
@@ -82,4 +87,12 @@ class User extends BaseUser
     public function setLastName($lastName){
         $this->lastName = $lastName;
     }
+    
+    /**
+      * @return Collection|Bet[]
+      */
+      public function getBets()
+      {
+          return $this->bets;
+      }
 }

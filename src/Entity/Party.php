@@ -58,11 +58,17 @@ class Party
      **/
      private $values;
      
+     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Bet", mappedBy="party")
+     **/
+     private $bets;
+     
      
      
      public function __construct()
      {
          $this->values = new ArrayCollection();
+         $this->bets   = new ArrayCollection();
      }
      
      public function getGame(): Game
@@ -81,5 +87,13 @@ class Party
       public function getValues()
       {
           return $this->values;
+      }
+      
+      /**
+      * @return Collection|Bet[]
+      */
+      public function getBets()
+      {
+          return $this->bets;
       }
 }
