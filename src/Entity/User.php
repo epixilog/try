@@ -26,12 +26,46 @@ class User extends BaseUser
      * @ORM\Column(type="string")
      */
     private $lastName;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $phone;
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $coins = 0;
+    
+    /**
+     * @ORM\Column(type="smallint")
+     **/
+    private $status = 0;
+    
+    /**
+     * @ORM\Column(type="string")
+     **/
+    private $affiliation;
+    
+    /**
+     * @ORM\Column(type="integer")
+     **/
+    private $affiliated;
 
+    
+
+    /**
+     * Constructors
+     **/
     public function __construct()
     {
         parent::__construct();
         // your own logic
     }
+    
+    /**
+     * Setters and Getters
+     **/
     
     public function getFirstName(){
         return $this->firstName;

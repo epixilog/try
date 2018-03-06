@@ -4,7 +4,7 @@
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
 
-<h3 class="nomargin">Sign In</h3>
+<h3 style="color:#eee;" class="nomargin">Sign In</h3>
 <p class="mt5 mb20">Not registered yet? <a href="{{path('fos_user_registration_register')}}"><strong>Register Now</strong></a></p>
 
 <form action="{{ path("fos_user_security_check") }}" method="post">
@@ -13,15 +13,15 @@
     {% endif %}
 
     <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+    <input type="text" id="username" class="form-control uname" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
 
     <label for="password">{{ 'security.login.password'|trans }}</label>
-    <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+    <input type="password" id="password" class="form-control pword" name="_password" required="required" autocomplete="current-password" />
 
     <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
     <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
     
-    <a href="{{ path('fos_user_resetting_request')}}">I forgot my password</a>
+    <p><a style="color:#eee;" href="{{ path('fos_user_resetting_request')}}">I forgot my password</a></p>
 
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+    <input type="submit" id="_submit" class="btn btn-success btn-block" name="_submit" value="{{ 'security.login.submit'|trans }}" />
 </form>
