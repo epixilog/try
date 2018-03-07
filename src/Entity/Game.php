@@ -46,11 +46,24 @@ class Game
      **/
      private $parties;
      
+     /**
+       * @ORM\Column(type="datetime")
+      **/
+      private $created;
+        
+      /**
+       * @ORM\Column(type="datetime")
+      **/
+      private $modified;
+     
+     
      
      public function __construct()
      {
          $this->parties = new ArrayCollection();
      }
+     
+     
      
      /**
       * @return Collection|Party[]
@@ -59,5 +72,22 @@ class Game
       {
           return $this->parties;
       }
+      
+      /**
+      * @ORM\PrePersist
+      */
+     public function setCreatedValue()
+     {
+         $this->created  = new \DateTime();
+         $this->modified = new \DateTime();
+     }
+     
+     /**
+      * @ORM\PreUpdate
+      */
+     public function setModifiedValue()
+     {
+         $this->modified = new \DateTime();
+     }
      
 }

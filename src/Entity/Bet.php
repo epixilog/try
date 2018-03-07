@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BetRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Bet
 {
@@ -65,5 +66,22 @@ class Bet
      public function setParty(Party $party)
      {
          $this->party = $party;
-     }   
+     }
+     
+     /**
+      * @ORM\PrePersist
+      */
+     public function setCreatedValue()
+     {
+         $this->created  = new \DateTime();
+         $this->modified = new \DateTime();
+     }
+     
+     /**
+      * @ORM\PreUpdate
+      */
+     public function setModifiedValue()
+     {
+         $this->modified = new \DateTime();
+     }
 }

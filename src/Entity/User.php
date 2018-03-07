@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class User extends BaseUser
 {
@@ -16,6 +17,11 @@ class User extends BaseUser
      * @ORM\Column(type="integer")
      */
     protected $id;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $userName;
     
     /**
      * @ORM\Column(type="string")
@@ -45,19 +51,27 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string")
      **/
-    private $affiliation; //[TODO] on create generate an affiliation code (new one)
+    private $affiliation;
     
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable = true)
      **/
-    private $affiliated;
+    private $affiliated = null;
     
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Bet", mappedBy="user")
      **/
      private $bets;
 
-    
+    /**
+      * @ORM\Column(type="datetime")
+      **/
+      private $created;
+      
+      /**
+      * @ORM\Column(type="datetime")
+      **/
+      private $modified;
 
     /**
      * Constructors
@@ -89,10 +103,30 @@ class User extends BaseUser
     }
     
     /**
-      * @return Collection|Bet[]
+     * @return Collection|Bet[]
+     */
+     public function getBets()
+     {
+         return $this->bets;
+     }
+      
+     /**
+      * @ORM\PrePersist
       */
-      public function getBets()
-      {
-          return $this->bets;
-      }
+     public function setCreatedValue()
+     {
+         $this->created  = new \DateTime();
+         $this->modified = new \DateTime();
+         
+         $aff_str = $this->getFirstName().date("YmdHms").$this->getLastName().date("YmdHms").$this->getUserName();
+         $this->affiliation = hash("sha256", $aff_str);
+     }
+     
+     /**
+      * @ORM\PreUpdate
+      */
+     public function setModifiedValue()
+     {
+         $this->modified = new \DateTime();
+     } 
 }

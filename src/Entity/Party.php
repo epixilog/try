@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PartyRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Party
 {
@@ -63,6 +64,16 @@ class Party
      **/
      private $bets;
      
+     /**
+      * @ORM\Column(type="datetime")
+      **/
+      private $created;
+      
+      /**
+      * @ORM\Column(type="datetime")
+      **/
+      private $modified;
+     
      
      
      public function __construct()
@@ -96,4 +107,21 @@ class Party
       {
           return $this->bets;
       }
+      
+      /**
+      * @ORM\PrePersist
+      */
+     public function setCreatedValue()
+     {
+         $this->created  = new \DateTime();
+         $this->modified = new \DateTime();
+     }
+     
+     /**
+      * @ORM\PreUpdate
+      */
+     public function setModifiedValue()
+     {
+         $this->modified = new \DateTime();
+     }
 }

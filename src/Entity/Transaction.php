@@ -5,7 +5,8 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\TTransactionRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TransactionRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Transaction
 {
@@ -36,5 +37,27 @@ class Transaction
      **/
      private $created;
      
+     /**
+       * @ORM\Column(type="datetime")
+      **/
+      private $modified;
+      
+      
+     
+     /**
+      * @ORM\PrePersist
+      */
+     public function setCreatedValue()
+     {
+         $this->created = new \DateTime();
+     }
+     
+     /**
+      * @ORM\PreUpdate
+      */
+     public function setModifiedValue()
+     {
+         $this->modified = new \DateTime();
+     }
      
 }

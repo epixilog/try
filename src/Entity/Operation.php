@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OperationRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Operation
 {
@@ -65,5 +66,23 @@ class Operation
        **/
       private $expired;
       
+      
+      
+     /**
+      * @ORM\PrePersist
+      */
+     public function setCreatedValue()
+     {
+         $this->created  = new \DateTime();
+         $this->modified = new \DateTime();
+     }
+     
+     /**
+      * @ORM\PreUpdate
+      */
+     public function setModifiedValue()
+     {
+         $this->modified = new \DateTime();
+     }
       
 }
