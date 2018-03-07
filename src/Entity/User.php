@@ -21,11 +21,6 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string")
      */
-    private $userName;
-    
-    /**
-     * @ORM\Column(type="string")
-     */
     private $firstName;
     
     /**
